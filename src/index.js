@@ -1,5 +1,5 @@
 import "./style.css";
-import showDialog from "./pages/add-task.js";
+import { showDialog, submitForm } from "./pages/add-task.js";
 import todoTab from "./pages/todo.js";
 import todayTab from "./pages/today.js";
 import upcomingTab from "./pages/upcoming.js";
@@ -28,4 +28,17 @@ upcoming.addEventListener('click', () => {
 const projects = document.querySelector(`#projects`);
 projects.addEventListener('click', () => {
     projectsTab();
+});
+
+const addTaskDialog = document.querySelector(`#add-task-dialog`);
+const addTaskForm = document.querySelector(`.add-task-form`);
+addTaskForm.addEventListener('submit', () => {
+    submitForm();
+    addTaskForm.reset();
+    addTaskDialog.close();
+});
+
+const addTaskCancelBtn = document.querySelector(`.cancel-btn`);
+addTaskCancelBtn.addEventListener('click', () => {
+    addTaskDialog.close();
 });
